@@ -5,27 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ROCS HiPC Workshop</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #f9fafc;
-      color: #333;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
       line-height: 1.6;
+      background: #f7f9fb;
+      color: #222;
     }
+
     header {
-      background: #004aad;
+      background: linear-gradient(135deg, #004aad, #0078ff);
       color: white;
-      padding: 1.5rem 0;
       text-align: center;
+      padding: 4rem 1rem;
+      position: relative;
     }
-    h1, h2 {
-      margin: 0.5rem 0;
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: #ffcc00;
     }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Navbar */
+    nav {
+      background: #023b8a;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      padding: 0.9rem 1.4rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    nav a:hover {
+      background: #0066ff;
+    }
+
+    /* Sections */
     main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
+
     section {
       background: white;
       padding: 1.5rem;
@@ -33,59 +80,183 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
     }
+
+    h2 {
+      color: #004aad;
+      margin-bottom: 0.8rem;
+    }
+
     ul {
       list-style: none;
       padding: 0;
     }
+
     li {
       background: #eef3ff;
       margin: 0.5rem 0;
       padding: 0.8rem;
       border-radius: 8px;
     }
+
+    /* Schedule Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #004aad;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f1f4ff;
+    }
+
+    /* Sponsors */
+    .sponsors {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .sponsors img {
+      height: 60px;
+      object-fit: contain;
+      filter: grayscale(30%);
+      transition: filter 0.2s;
+    }
+
+    .sponsors img:hover {
+      filter: grayscale(0%);
+    }
+
     footer {
+      background: #004aad;
+      color: white;
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      color: #666;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>ROCS HiPC Workshop</h1>
-    <p>Reconfigurable Computing and Systems Tutorial — HiPC 2025</p>
+    <p>Research on Computing Systems — HiPC 2025</p>
   </header>
 
+  <nav>
+    <a href="#about">About</a>
+    <a href="#keynote">Keynote</a>
+    <a href="#tutorials">Tutorials</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#sponsors">Sponsors</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <main>
-    <section>
+    <section id="about">
       <h2>About</h2>
       <p>
-        The ROCS HiPC Workshop brings together researchers and practitioners in high performance computing systems.
-        This event includes a keynote and multiple tutorials led by experts in the field.
+        The ROCS HiPC Workshop brings together researchers and practitioners in high-performance computing systems.
+        This event features a keynote and several tutorials led by experts in the field.
       </p>
     </section>
 
-    <section>
+    <section id="keynote">
       <h2>Keynote</h2>
       <ul>
-        <li><strong>Keynote Speaker:</strong> (Institution)</li>
+        <li><strong>Keynote Speaker:</strong> Foo Bar (Institution)</li>
       </ul>
     </section>
 
-    <section>
+    <section id="tutorials">
       <h2>Tutorials</h2>
       <ul>
-        <li><strong>Tutorial 1:</strong> Topic 1</li>
-        <li><strong>Tutorial 2:</strong> Topic 2</li>
-        <li><strong>Tutorial 3:</strong> Topic 3</li>
+        <li><strong>Tutorial 1:</strong> Foo Bar — Topic 1</li>
+        <li><strong>Tutorial 2:</strong> Foo Bar — Topic 2</li>
+        <li><strong>Tutorial 3:</strong> Foo Bar — Topic 3</li>
       </ul>
     </section>
 
-    <section>
+    <section id="schedule">
+      <h2>Schedule</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Session</th>
+            <th>Speaker</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>09:00 - 09:45</td>
+            <td>Welcome & Opening Remarks</td>
+            <td>Organizing Committee</td>
+          </tr>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td>Keynote: Foo Bar</td>
+            <td>Foo Bar</td>
+          </tr>
+          <tr>
+            <td>11:15 - 12:30</td>
+            <td>Tutorial 1: Foo Bar — Topic 1</td>
+            <td>Foo Bar</td>
+          </tr>
+          <tr>
+            <td>14:00 - 15:15</td>
+            <td>Tutorial 2: Foo Bar — Topic 2</td>
+            <td>Foo Bar</td>
+          </tr>
+          <tr>
+            <td>15:30 - 16:45</td>
+            <td>Tutorial 3: Foo Bar — Topic 3</td>
+            <td>Foo Bar</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="sponsors">
+      <h2>Sponsors & Partners</h2>
+      <div class="sponsors">
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+1" alt="Sponsor 1">
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+2" alt="Sponsor 2">
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+3" alt="Sponsor 3">
+      </div>
+    </section>
+
+    <section id="contact">
       <h2>Contact</h2>
       <p>
-        For inquiries, please email: <a href="mailto:rocs.hipc@gmail.com">rocs.hipc@gmail.com</a>
+        For inquiries, please email: <a href="mailto:info@rocs-hipc.org">info@rocs-hipc.org</a>
       </p>
     </section>
   </main>
