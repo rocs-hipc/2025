@@ -14,127 +14,89 @@
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       line-height: 1.6;
+      background: #f7f9fb;
       color: #222;
       scroll-behavior: smooth;
-      background: #f7f9fb;
     }
 
-    /* HEADER */
+    /* Hero Section */
     header {
-      background: linear-gradient(135deg, rgba(60,60,60,0.9), rgba(10,10,10,0.9));
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-    }
-
-    header h1 {
-      font-size: 1.4rem;
-      font-weight: 600;
-    }
-
-    /* NAVIGATION */
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      color: #ffd500;
-    }
-
-    /* HAMBURGER MENU */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background: white;
-      margin: 4px 0;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translateY(8px);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translateY(-8px);
-    }
-
-    /* HERO SECTION */
-    .hero {
-      margin-top: 70px;
       background: linear-gradient(
-          rgba(0, 74, 173, 0.8),
+          rgba(0, 74, 173, 0.85),
           rgba(0, 120, 255, 0.7)
         ),
         url("https://via.placeholder.com/1600x600?text=ROCS+HiPC+Workshop")
           center/cover no-repeat;
       color: white;
       text-align: center;
-      padding: 6rem 1rem;
+      padding: 5rem 1rem;
+      position: relative;
     }
 
-    .hero h2 {
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #ffd500, #ff9100);
+    }
+
+    header h1 {
       font-size: 2.8rem;
-      margin-bottom: 0.8rem;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
 
-    .hero p {
+    header p {
       font-size: 1.2rem;
       opacity: 0.95;
     }
 
-    /* FULL-WIDTH SECTIONS */
+    /* Navbar */
+    nav {
+      background: rgba(2, 59, 138, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      padding: 0.9rem 1.4rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff799;
+    }
+
+    /* Main Sections */
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
     section {
-      width: 100%;
-      padding: 3rem 1.5rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
     }
 
-    section:nth-child(even) {
-      background: #ffffff;
-    }
-
-    section:nth-child(odd) {
-      background: #eef3ff;
-    }
-
-    section h2 {
+    h2 {
       color: #004aad;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    section p, section ul, section table {
-      max-width: 1000px;
-      margin: 0 auto;
+      margin-bottom: 0.8rem;
     }
 
     ul {
@@ -143,24 +105,23 @@
     }
 
     li {
-      background: white;
-      margin: 0.5rem auto;
+      background: #eef3ff;
+      margin: 0.5rem 0;
       padding: 0.8rem;
       border-radius: 8px;
-      max-width: 800px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
 
-    /* SCHEDULE TABLE */
+    /* Schedule Table */
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 1rem;
     }
 
-    th, td {
+    th,
+    td {
       padding: 0.8rem;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       text-align: left;
     }
 
@@ -170,17 +131,17 @@
     }
 
     tr:nth-child(even) {
-      background: #f2f6ff;
+      background: #f1f4ff;
     }
 
-    /* SPONSORS */
+    /* Sponsors Section */
     .sponsors {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 2rem;
-      margin-top: 1.5rem;
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
 
     .sponsors img {
@@ -195,7 +156,7 @@
       transform: scale(1.05);
     }
 
-    /* BACK TO TOP BUTTON */
+    /* Back to Top Button */
     #backToTop {
       position: fixed;
       bottom: 30px;
@@ -217,44 +178,41 @@
 
     #backToTop:hover {
       transform: translateY(-4px) scale(1.1);
+      background: linear-gradient(135deg, rgba(0, 74, 173, 1), rgba(0, 140, 255, 1));
     }
 
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 140, 255, 0.5); }
-      70% { box-shadow: 0 0 0 10px rgba(0, 140, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 140, 255, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 140, 255, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(0, 140, 255, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 140, 255, 0);
+      }
     }
 
     footer {
       background: rgba(0, 74, 173, 0.9);
       color: white;
       text-align: center;
-      padding: 1.5rem;
+      padding: 1rem;
       font-size: 0.9rem;
       backdrop-filter: blur(10px);
     }
 
-    /* MOBILE STYLES */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
+    @media (max-width: 700px) {
       nav {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 74, 173, 0.95);
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
-        display: none;
       }
 
-      nav.active {
-        display: flex;
+      nav a {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      header h1 {
+        font-size: 2rem;
       }
     }
   </style>
@@ -262,123 +220,109 @@
 <body>
   <header>
     <h1>ROCS HiPC Workshop</h1>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
-    </div>
-    <nav id="nav">
-      <a href="#about">About</a>
-      <a href="#keynote">Keynote</a>
-      <a href="#tutorials">Tutorials</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#sponsors">Sponsors</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <p>Research on Computing Systems — HiPC 2025</p>
   </header>
 
-  <section class="hero">
-    <h2>ROCS HiPC Workshop 2025</h2>
-    <p>Research on Computing Systems — Advancing High Performance Computing</p>
-  </section>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#keynote">Keynote</a>
+    <a href="#tutorials">Tutorials</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#sponsors">Sponsors</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>
-      The ROCS HiPC Workshop brings together researchers and practitioners in
-      high-performance computing systems. This event features a keynote and
-      several tutorials led by experts in the field.
-    </p>
-  </section>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        The ROCS HiPC Workshop brings together researchers and practitioners in
+        high-performance computing systems. This event features a keynote and
+        several tutorials led by experts in the field.
+      </p>
+    </section>
 
-  <section id="keynote">
-    <h2>Keynote</h2>
-    <ul>
-      <li><strong>Keynote Speaker:</strong> Foo Bar (Institution)</li>
-    </ul>
-  </section>
+    <section id="keynote">
+      <h2>Keynote</h2>
+      <ul>
+        <li><strong>Keynote Speaker:</strong> Foo Bar (Institution)</li>
+      </ul>
+    </section>
 
-  <section id="tutorials">
-    <h2>Tutorials</h2>
-    <ul>
-      <li><strong>Tutorial 1:</strong> Foo Bar — Topic 1</li>
-      <li><strong>Tutorial 2:</strong> Foo Bar — Topic 2</li>
-      <li><strong>Tutorial 3:</strong> Foo Bar — Topic 3</li>
-    </ul>
-  </section>
+    <section id="tutorials">
+      <h2>Tutorials</h2>
+      <ul>
+        <li><strong>Tutorial 1:</strong> Foo Bar — Topic 1</li>
+        <li><strong>Tutorial 2:</strong> Foo Bar — Topic 2</li>
+        <li><strong>Tutorial 3:</strong> Foo Bar — Topic 3</li>
+      </ul>
+    </section>
 
-  <section id="schedule">
-    <h2>Schedule</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Session</th>
-          <th>Speaker</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>09:00 - 09:45</td>
-          <td>Welcome & Opening Remarks</td>
-          <td>Organizing Committee</td>
-        </tr>
-        <tr>
-          <td>10:00 - 11:00</td>
-          <td>Keynote: Foo Bar</td>
-          <td>Foo Bar</td>
-        </tr>
-        <tr>
-          <td>11:15 - 12:30</td>
-          <td>Tutorial 1: Foo Bar — Topic 1</td>
-          <td>Foo Bar</td>
-        </tr>
-        <tr>
-          <td>14:00 - 15:15</td>
-          <td>Tutorial 2: Foo Bar — Topic 2</td>
-          <td>Foo Bar</td>
-        </tr>
-        <tr>
-          <td>15:30 - 16:45</td>
-          <td>Tutorial 3: Foo Bar — Topic 3</td>
-          <td>Foo Bar</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <section id="schedule">
+      <h2>Schedule</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Session</th>
+            <th>Speaker</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>09:00 - 09:45</td>
+            <td>Welcome & Opening Remarks</td>
+            <td>Organizing Committee</td>
+          </tr>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td>Keynote: Foo Bar</td>
+            <td>Foo Bar</td>
+          </tr>
+          <tr>
+            <td>11:15 - 12:30</td>
+            <td>Tutorial 1: Foo Bar — Topic 1</td>
+            <td>Foo Bar</td>
+          </tr>
+          <tr>
+            <td>14:00 - 15:15</td>
+            <td>Tutorial 2: Foo Bar — Topic 2</td>
+            <td>Foo Bar</td>
+          </tr>
+          <tr>
+            <td>15:30 - 16:45</td>
+            <td>Tutorial 3: Foo Bar — Topic 3</td>
+            <td>Foo Bar</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-  <section id="sponsors">
-    <h2>Sponsors & Partners</h2>
-    <div class="sponsors">
-      <img src="https://via.placeholder.com/150x60?text=Sponsor+1" alt="Sponsor 1">
-      <img src="https://via.placeholder.com/150x60?text=Sponsor+2" alt="Sponsor 2">
-      <img src="https://via.placeholder.com/150x60?text=Sponsor+3" alt="Sponsor 3">
-    </div>
-  </section>
+    <section id="sponsors">
+      <h2>Sponsors & Partners</h2>
+      <div class="sponsors">
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+1" alt="Sponsor 1" />
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+2" alt="Sponsor 2" />
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+3" alt="Sponsor 3" />
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      For inquiries, please email:
-      <a href="mailto:info@rocs-hipc.org">info@rocs-hipc.org</a>
-    </p>
-  </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        For inquiries, please email:
+        <a href="mailto:info@rocs-hipc.org">info@rocs-hipc.org</a>
+      </p>
+    </section>
+  </main>
+
+  <button id="backToTop" title="Back to top">↑</button>
 
   <footer>
     &copy; 2025 ROCS HiPC Workshop. All rights reserved.
   </footer>
 
-  <button id="backToTop" title="Back to top">↑</button>
-
   <script>
-    // Hamburger Menu Toggle
-    const menuToggle = document.getElementById("menu-toggle");
-    const nav = document.getElementById("nav");
-
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active");
-      nav.classList.toggle("active");
-    });
-
-    // Back to Top Button
     const backToTop = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 400) {
