@@ -19,11 +19,11 @@
       scroll-behavior: smooth;
     }
 
-    /* Hero / Header */
+    /* Hero Section */
     header {
       background: linear-gradient(
           rgba(0, 74, 173, 0.85),
-          rgba(0, 120, 255, 0.75)
+          rgba(0, 120, 255, 0.7)
         ),
         url("https://via.placeholder.com/1600x600?text=ROCS+HiPC+Workshop")
           center/cover no-repeat;
@@ -56,7 +56,7 @@
 
     /* Navbar */
     nav {
-      background: rgba(2, 59, 138, 0.9);
+      background: rgba(2, 59, 138, 0.85);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
@@ -79,7 +79,7 @@
       color: #fff799;
     }
 
-    /* Sections */
+    /* Main Sections */
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -134,7 +134,7 @@
       background: #f1f4ff;
     }
 
-    /* Sponsors */
+    /* Sponsors Section */
     .sponsors {
       display: flex;
       flex-wrap: wrap;
@@ -161,21 +161,36 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: rgba(0, 74, 173, 0.85);
+      background: linear-gradient(135deg, rgba(0, 74, 173, 0.9), rgba(0, 140, 255, 0.9));
       color: white;
       border: none;
-      padding: 0.8rem 1rem;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       cursor: pointer;
       display: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
+      z-index: 2000;
+      animation: pulse 2s infinite;
     }
 
     #backToTop:hover {
-      background: rgba(0, 74, 173, 1);
-      transform: translateY(-3px);
+      transform: translateY(-4px) scale(1.1);
+      background: linear-gradient(135deg, rgba(0, 74, 173, 1), rgba(0, 140, 255, 1));
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 140, 255, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(0, 140, 255, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 140, 255, 0);
+      }
     }
 
     footer {
@@ -286,18 +301,9 @@
     <section id="sponsors">
       <h2>Sponsors & Partners</h2>
       <div class="sponsors">
-        <img
-          src="https://via.placeholder.com/150x60?text=Sponsor+1"
-          alt="Sponsor 1"
-        />
-        <img
-          src="https://via.placeholder.com/150x60?text=Sponsor+2"
-          alt="Sponsor 2"
-        />
-        <img
-          src="https://via.placeholder.com/150x60?text=Sponsor+3"
-          alt="Sponsor 3"
-        />
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+1" alt="Sponsor 1" />
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+2" alt="Sponsor 2" />
+        <img src="https://via.placeholder.com/150x60?text=Sponsor+3" alt="Sponsor 3" />
       </div>
     </section>
 
@@ -317,7 +323,6 @@
   </footer>
 
   <script>
-    // Show back-to-top button when user scrolls down
     const backToTop = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 400) {
@@ -327,7 +332,6 @@
       }
     });
 
-    // Smooth scroll to top
     backToTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
