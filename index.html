@@ -3,393 +3,343 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROCS HiPC Workshop</title>
+  <title>ROCS HiPC Workshop 2025</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg-color:#ffffff;
+      --accent-color:#009688;
+      --text-color:#222222;
+      --light-accent:#e0f2f1;
+      --border-color:#b2dfdb;
+      --nav-height:90px; /* will be updated by JS */
+      --anchor-gap:10px; /* extra breathing room under nav */
+      --maxw:1200px;
     }
 
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      scroll-behavior: smooth;
-      background: #f7f9fb;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+      background:var(--bg-color);color:var(--text-color);line-height:1.6;
     }
 
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, rgba(60,60,60,0.9), rgba(10,10,10,0.9));
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
+    header{
+      background:linear-gradient(135deg,var(--accent-color),#26a69a);
+      color:#fff;text-align:center;padding:3rem 1rem;
+      box-shadow:0 4px 10px rgba(0,0,0,.1);
+    }
+    header h1{font-size:2.5rem;margin-bottom:.5rem}
+    header p{font-size:1.1rem;opacity:.95}
+
+    /* Sticky nav */
+    nav{
+      position:sticky;top:0;z-index:1000;
+      display:flex;justify-content:center;flex-wrap:wrap;
+      background:var(--light-accent);
+      border-bottom:2px solid var(--border-color);
+      box-shadow:0 2px 6px rgba(0,0,0,.06);
+    }
+    nav a{
+      color:var(--accent-color);text-decoration:none;
+      padding:1rem 1.5rem;font-weight:600;
+      transition:background .25s,color .25s;border-radius:6px;
+    }
+    nav a:hover{background:var(--accent-color);color:#fff}
+
+    main{max-width:var(--maxw);margin:2rem auto;padding:0 2rem}
+
+    section{
+      background:#fff;padding:2rem;border-radius:1rem;
+      border:1px solid var(--border-color);
+      box-shadow:0 3px 8px rgba(0,0,0,.05);margin-bottom:2rem;
+      /* Key: ensure anchors land below sticky nav */
+      scroll-margin-top: calc(var(--nav-height) + var(--anchor-gap));
     }
 
-    header h1 {
-      font-size: 1.4rem;
-      font-weight: 600;
+    h2{
+      color:var(--accent-color);border-bottom:2px solid var(--accent-color);
+      padding-bottom:.5rem;margin-bottom:1rem;font-size:1.5rem;
     }
 
-    /* NAVIGATION */
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
+    ul{list-style:none}
+    li{
+      background:var(--light-accent);margin-bottom:.5rem;padding:.8rem 1rem;
+      border-left:4px solid var(--accent-color);border-radius:.5rem;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
+    /* Table */
+    table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.95rem;table-layout:fixed;word-wrap:break-word}
+    th,td{padding:.9rem;border:1px solid var(--border-color);text-align:left}
+    th{background:var(--accent-color);color:#fff}
+    tbody tr:nth-child(even){background:var(--light-accent)}
+    thead tr:first-child th,
+    thead tr:nth-child(2) th,
+    thead tr:nth-child(3) th{
+      background:var(--light-accent);color:var(--accent-color);
+      font-weight:700;text-align:center
+    }
+    thead tr:nth-child(3) th{text-align:left}
+
+    .sponsors{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;margin-top:1.5rem}
+    .sponsors img{height:70px;filter:grayscale(20%);transition:filter .2s,transform .2s}
+    .sponsors img:hover{filter:grayscale(0%);transform:scale(1.05)}
+
+    footer{
+      text-align:center;padding:1.5rem;font-size:.9rem;color:#555;
+      border-top:2px solid var(--border-color);background:var(--light-accent);
     }
 
-    nav a:hover {
-      color: #ffd500;
+    /* Responsive tweaks */
+    @media (max-width:900px){
+      main{padding:0 1rem}
+      section{padding:1.5rem}
+      table{font-size:.9rem}
     }
-
-    /* HAMBURGER MENU */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      cursor: pointer;
+    @media (max-width:700px){
+      nav{flex-direction:column;align-items:stretch}
+      nav a{border-top:1px solid var(--border-color);border-radius:0;text-align:center}
+      header h1{font-size:2rem}
+      h2{font-size:1.3rem}
     }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background: white;
-      margin: 4px 0;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translateY(8px);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translateY(-8px);
-    }
-
-    /* HERO SECTION */
-    .hero {
-      margin-top: 70px;
-      background: linear-gradient(
-          linear-gradient(135deg, rgba(60,60,60,0.9), rgba(10,10,10,0.9));
-        ),
-        url("https://via.placeholder.com/1600x600?text=ROCS+HiPC+Workshop")
-          center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 6rem 1rem;
-    }
-
-    .hero h2 {
-      font-size: 2.8rem;
-      margin-bottom: 0.8rem;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      opacity: 0.95;
-    }
-
-    /* FULL-WIDTH SECTIONS */
-    section {
-      width: 100%;
-      padding: 3rem 1.5rem;
-    }
-
-    section:nth-child(even) {
-      background: #ffffff;
-    }
-
-    section:nth-child(odd) {
-      background: #ffffff;
-    }
-
-    section h2 {
-      color: #004aad;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    section p, section ul, section table {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      background: white;
-      margin: 0.5rem auto;
-      padding: 0.8rem;
-      border-radius: 8px;
-      max-width: 800px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-
-    /* SCHEDULE TABLE */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-
-    th, td {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      text-align: left;
-    }
-
-    th {
-      background: rgba(0, 74, 173, 0.9);
-      color: white;
-    }
-
-    tr:nth-child(even) {
-      background: #f2f6ff;
-    }
-
-    /* SPONSORS */
-    .sponsors {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .sponsors img {
-      height: 60px;
-      object-fit: contain;
-      filter: grayscale(40%);
-      transition: filter 0.2s, transform 0.2s;
-    }
-
-    .sponsors img:hover {
-      filter: grayscale(0%);
-      transform: scale(1.05);
-    }
-
-    /* BACK TO TOP BUTTON */
-    #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, rgba(0, 74, 173, 0.9), rgba(0, 140, 255, 0.9));
-      color: white;
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 1.3rem;
-      cursor: pointer;
-      display: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      z-index: 2000;
-      animation: pulse 2s infinite;
-    }
-
-    #backToTop:hover {
-      transform: translateY(-4px) scale(1.1);
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 140, 255, 0.5); }
-      70% { box-shadow: 0 0 0 10px rgba(0, 140, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 140, 255, 0); }
-    }
-
-    footer {
-      background: rgba(0, 74, 173, 0.9);
-      color: white;
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      backdrop-filter: blur(10px);
-    }
-
-    /* MOBILE STYLES */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      nav {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 74, 173, 0.95);
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
-        display: none;
-      }
-
-      nav.active {
-        display: flex;
-      }
+    @media (max-width:500px){
+      table,th,td{font-size:.82rem}
+      th,td{padding:.6rem}
+      nav a{font-size:.95rem}
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>ROCS HiPC Workshop</h1>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
-    </div>
-    <nav id="nav">
-      <a href="#about">About</a>
-      <a href="#keynote">Keynote</a>
-      <a href="#tutorials">Tutorials</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#sponsors">Sponsors</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <h1>RecOnfigurable Computing and Systems Workshop 2025</h1>
+    <p>32nd IEEE International Conference on High Performance Computing, Data, & Analytics</p>
+	<p>Dec 17 2025, Hyderabad, India</p>
   </header>
 
-  <section class="hero">
-    <h2>ROCS HiPC Workshop 2025</h2>
-    <p>Research on Computing Systems — Advancing High Performance Computing</p>
-  </section>
+  <nav id="site-nav">
+    <a href="#about">About</a>
+    <a href="#keynote">Keynote</a>
+    <a href="#tutorials">Tutorials</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#people">People</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>
-      The ROCS HiPC Workshop brings together researchers and practitioners in
-      high-performance computing systems. This event features a keynote and
-      several tutorials led by experts in the field.
-    </p>
-  </section>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        Reconfigurable computing involves using hardware that can be dynamically reprogrammed to optimize performance for specific tasks. Heterogeneous computing combines different types of compute elements to handle diverse workloads efficiently. Field-Programmable Gate Arrays (FPGAs) are mainly used for reconfigurable computing, and are crucial for high-performance computing applications and accelerating machine learning (ML) applications. Unlike general-purpose CPUs and GPUs, FPGAs can be reconfigured to execute repetitive and computationally intense operations, offering better energy efficiency. The Reconfigurable Computing and Systems Workshop (ROCS) is the first edition running in conjunction with HIPC, aimed at attracting participants to discuss aspects of reconfigurable and heterogeneous computing systems. The broad topics of interest include architecture, programming methodologies, heterogeneous computing, applications such as ML acceleration, embedded systems, IoT devices, telecommunications, data center accelerators and related areas.
+      </p>
+    </section>
 
-  <section id="keynote">
-    <h2>Keynote</h2>
-    <ul>
-      <li><strong>Keynote Speaker:</strong> Foo Bar (Institution)</li>
-    </ul>
-  </section>
+    <section id="keynote">
+  <h2>Keynote</h2>
+  <ul>
+    <li><strong>Keynote Speaker:</strong> TBD</li>
+    <li><strong>Title:</strong> Ubiquitous AI: The Agile Generation of Inference Solutions</li>
+  </ul>
+  <p>
+    As artificial intelligence becomes woven into every layer of modern computing, the need for adaptable and efficient inference solutions is growing exponentially. This keynote explores the emerging concept of “Ubiquitous AI,” focusing on agile, reconfigurable architectures that seamlessly bridge edge, cloud, and hybrid environments. Attendees will gain insights into the co-evolution of AI algorithms, inference hardware, and deployment frameworks that together define the future of pervasive intelligent systems.
+  </p>
+</section>
 
-  <section id="tutorials">
-    <h2>Tutorials</h2>
-    <ul>
-      <li><strong>Tutorial 1:</strong> Foo Bar — Topic 1</li>
-      <li><strong>Tutorial 2:</strong> Foo Bar — Topic 2</li>
-      <li><strong>Tutorial 3:</strong> Foo Bar — Topic 3</li>
-    </ul>
-  </section>
+    <section id="tutorials">
+  <h2>Tutorials</h2>
+  <ul>
+    <li>
+      <strong>Model Deployment on AMD MPSoC and Cloud (AMD HACC)</strong> <br/>
+      <em>Presenters: TBD</em> <br/>
+      <p>
+        This tutorial demonstrates how to deploy AI models efficiently across AMD heterogeneous architectures, from MPSoC edge devices to scalable cloud systems using the AMD HACC framework. Attendees will learn practical strategies for optimizing inference latency, memory bandwidth, and energy usage in hybrid deployments.
+      </p>
+    </li>
+    <li>
+      <strong>AI Development Flow on AMD NPUs</strong> <br/>
+      <em>Presenters: TBD</em> <br/>
+      <p>
+        Discover the end-to-end AI development flow leveraging AMD’s Neural Processing Units (NPUs) for high-performance inference acceleration. The session will walk through model quantization, compilation, and runtime optimization workflows tailored to AMD’s latest NPU ecosystem.
+      </p>
+    </li>
+    <li>
+      <strong>Introduction to FPGA, FINN, and Brevitas</strong> <br/>
+      <em>Presenters: TBD</em> <br/>
+      <p>
+        This introductory tutorial offers a guided overview of FPGA-based AI acceleration using FINN and Brevitas. Participants will explore quantization-aware training and custom dataflow architectures to accelerate low-precision neural networks with high efficiency.
+      </p>
+    </li>
+  </ul>
+</section>
 
-  <section id="schedule">
-    <h2>Schedule</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Session</th>
-          <th>Speaker</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>09:00 - 09:45</td>
-          <td>Welcome & Opening Remarks</td>
-          <td>Organizing Committee</td>
-        </tr>
-        <tr>
-          <td>10:00 - 11:00</td>
-          <td>Keynote: Foo Bar</td>
-          <td>Foo Bar</td>
-        </tr>
-        <tr>
-          <td>11:15 - 12:30</td>
-          <td>Tutorial 1: Foo Bar — Topic 1</td>
-          <td>Foo Bar</td>
-        </tr>
-        <tr>
-          <td>14:00 - 15:15</td>
-          <td>Tutorial 2: Foo Bar — Topic 2</td>
-          <td>Foo Bar</td>
-        </tr>
-        <tr>
-          <td>15:30 - 16:45</td>
-          <td>Tutorial 3: Foo Bar — Topic 3</td>
-          <td>Foo Bar</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <section id="schedule">
+      <h2>Schedule</h2>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="5">2nd Workshop on Reconfiguration Computing and Systems (ROCS) – as part of HiPC</th>
+          </tr>
+          <tr>
+            <th colspan="5">Dec 17, 2025, Wednesday</th>
+          </tr>
+          <tr>
+            <th>Time</th>
+            <th>Duration (min)</th>
+            <th>Type of event/talk</th>
+            <th>Title</th>
+            <th>Speaker</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>09:00 – 09:10</td>
+            <td>10</td>
+            <td>Opening Remarks</td>
+            <td>Welcome Address</td>
+            <td>Organizing Committee</td>
+          </tr>
+          <tr>
+            <td>09:10 – 09:40</td>
+            <td>30</td>
+            <td>Keynote</td>
+            <td>Emerging Trends in Reconfigurable HPC Systems</td>
+            <td>TBD</td>
+          </tr>
+          <tr>
+            <td>09:40 – 10:40</td>
+            <td>60</td>
+            <td>Tutorial</td>
+            <td>FPGA Acceleration Techniques for Machine Learning<br/></td>
+            <td>TBD</td>
+          </tr>
+          <tr>
+            <td>10:40 – 10:45</td>
+            <td>5</td>
+            <td>Break</td>
+            <td>Coffee Break</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>10:45 – 11:45</td>
+            <td>60</td>
+            <td>Tutorial</td>
+            <td>Dynamic Reconfiguration for Energy-Efficient HPC<br/></td>
+            <td>TBD</td>
+          </tr>
+          <tr>
+            <td>11:45 – 11:50</td>
+            <td>5</td>
+            <td>Break</td>
+            <td>Coffee Break</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>11:50 – 12:50</td>
+            <td>60</td>
+            <td>Tutorial</td>
+            <td>Design Automation Tools for Adaptive Architectures<br/></td>
+            <td>TBD</td>
+          </tr>
+          <tr>
+            <td>12:50 – 12:55</td>
+            <td>5</td>
+            <td>Break</td>
+            <td>Coffee Break</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>12:55 – 13:00</td>
+            <td>5</td>
+            <td>Closing Remarks</td>
+            <td>Closing Remarks</td>
+            <td>TBD</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-  <section id="sponsors">
-    <h2>Sponsors & Partners</h2>
-    <div class="sponsors">
-      <img src="https://via.placeholder.com/150x60?text=Sponsor+1" alt="Sponsor 1">
-      <img src="https://via.placeholder.com/150x60?text=Sponsor+2" alt="Sponsor 2">
-      <img src="https://via.placeholder.com/150x60?text=Sponsor+3" alt="Sponsor 3">
-    </div>
-  </section>
+    <section id="people">
+      <h2>People</h2>
+      <ul>
+        <li>
+          <strong>TBD</strong><br/>
+          <em>Affiliation:</em> AMD <br/>
+          <em>Bio:</em> Lead Systems Architect at Xilinx India, specializing in AI compiler flows and energy-efficient reconfiguration techniques. Instrumental in developing next-generation FPGA-based AI acceleration platforms and holds multiple patents in the domain.
+        </li>
+        <li>
+          <strong>TBD</strong><br/>
+          <em>Affiliation:</em> IIT Hyderabad <br/>
+          <em>Bio:</em>Associate Professor at IIT Hyderabad, with expertise in reconfigurable computing, FPGA design, and embedded AI systems. Research focuses on dynamic reconfiguration techniques and has led several industry collaborations in the field of adaptive computing.
+        </li>
+        <li>
+          <strong>TBD</strong><br/>
+          <em>Affiliation:</em> AMD <br/>
+          <em>Bio:</em>Lead Systems Architect at Xilinx India, specializing in AI compiler flows and energy-efficient reconfiguration techniques. Instrumental in developing next-generation FPGA-based AI acceleration platforms and holds multiple patents in the domain.
+        </li>
+      </ul>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      For inquiries, please email:
-      <a href="mailto:info@rocs-hipc.org">info@rocs-hipc.org</a>
-    </p>
-  </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        For inquiries, please email:
+        <a href="mailto:rocs.hipc@gmail.com" style="color: var(--accent-color); text-decoration: underline;">rocs.hipc@gmail.com</a>
+      </p>
+    </section>
+  </main>
 
   <footer>
     &copy; 2025 ROCS HiPC Workshop. All rights reserved.
   </footer>
 
-  <button id="backToTop" title="Back to top">↑</button>
-
   <script>
-    // Hamburger Menu Toggle
-    const menuToggle = document.getElementById("menu-toggle");
-    const nav = document.getElementById("nav");
+    // --- Dynamic offset handling so anchors never hide under the sticky nav ---
+    const nav = document.getElementById('site-nav');
+    const sections = document.querySelectorAll('main section');
+    const links = document.querySelectorAll('nav a');
 
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active");
-      nav.classList.toggle("active");
+    function setNavHeightVar() {
+      const h = nav.offsetHeight || 0;
+      document.documentElement.style.setProperty('--nav-height', h + 'px');
+    }
+
+    function smoothScrollToHash(hash) {
+      if (!hash) return;
+      const el = document.querySelector(hash);
+      if (!el) return;
+      // Compute target position with offset
+      const navH = nav.offsetHeight || 0;
+      const gap = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--anchor-gap')) || 0;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - navH - gap;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+
+    // Set CSS var on load & resize
+    window.addEventListener('load', () => {
+      setNavHeightVar();
+      // If the page loaded with a hash, correct it
+      if (location.hash) setTimeout(() => smoothScrollToHash(location.hash), 0);
+    });
+    window.addEventListener('resize', () => {
+      setNavHeightVar();
     });
 
-    // Back to Top Button
-    const backToTop = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
-        backToTop.style.display = "block";
-      } else {
-        backToTop.style.display = "none";
-      }
+    // Intercept nav link clicks for offset-aware scrolling
+    links.forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          history.pushState(null, '', href);
+          smoothScrollToHash(href);
+        }
+      });
     });
 
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    // Handle manual hash changes (e.g., back/forward)
+    window.addEventListener('hashchange', () => {
+      smoothScrollToHash(location.hash);
     });
+
   </script>
 </body>
 </html>
