@@ -128,7 +128,7 @@
     <section id="about">
       <h2>About</h2>
       <p>
-        Reconfigurable computing involves using hardware that can be dynamically reprogrammed to optimize performance for specific tasks. Heterogeneous computing combines different types of compute elements to handle diverse workloads efficiently. Field-Programmable Gate Arrays (FPGAs) are mainly used for reconfigurable computing, and are crucial for high-performance computing applications and accelerating machine learning (ML) applications. Unlike general-purpose CPUs and GPUs, FPGAs can be reconfigured to execute repetitive and computationally intense operations, offering better energy efficiency. The Reconfigurable Computing and Systems Workshop (ROCS) is the first edition running in conjunction with HIPC, aimed at attracting participants to discuss aspects of reconfigurable and heterogeneous computing systems. The broad topics of interest include architecture, programming methodologies, heterogeneous computing, applications such as ML acceleration, embedded systems, IoT devices, telecommunications, data center accelerators and related areas.
+        Reconfigurable computing involves using hardware that can be dynamically reprogrammed to optimize performance for specific tasks. Field-Programmable Gate Arrays (FPGAs) are mainly used for reconfigurable computing, and are crucial for high-performance computing applications and accelerating machine learning (ML) applications. Unlike general-purpose CPUs and GPUs, FPGAs can be reconfigured to execute repetitive and computationally intense operations, offering better energy efficiency. The Reconfigurable Computing and Systems Workshop (ROCS) is aimed at attracting participants to discuss architecture of latest FPGAs and flows for executing deep learning workloads on such FPGA.
       </p>
     </section>
 
@@ -136,10 +136,10 @@
   <h2>Keynote</h2>
   <ul>
     <li><strong>Keynote Speaker:</strong> TBD</li>
-    <li><strong>Title:</strong> Ubiquitous AI: The Agile Generation of Inference Solutions</li>
+    <li><strong>Title:</strong> TBD</li>
   </ul>
   <p>
-    As artificial intelligence becomes woven into every layer of modern computing, the need for adaptable and efficient inference solutions is growing exponentially. This keynote explores the emerging concept of “Ubiquitous AI,” focusing on agile, reconfigurable architectures that seamlessly bridge edge, cloud, and hybrid environments. Attendees will gain insights into the co-evolution of AI algorithms, inference hardware, and deployment frameworks that together define the future of pervasive intelligent systems.
+    TBD
   </p>
 </section>
 
@@ -147,24 +147,25 @@
   <h2>Tutorials</h2>
   <ul>
     <li>
-      <strong>Model Deployment on AMD MPSoC and Cloud (AMD HACC)</strong> <br/>
-      <em>Presenters: TBD</em> <br/>
+      <strong>AMD Versal Device and Vitis Flow</strong> <br/>
+      <em>Presenters: Wikneswaran (Wicky) Pillai, AMD</em> <br/>
       <p>
-        This tutorial demonstrates how to deploy AI models efficiently across AMD heterogeneous architectures, from MPSoC edge devices to scalable cloud systems using the AMD HACC framework. Attendees will learn practical strategies for optimizing inference latency, memory bandwidth, and energy usage in hybrid deployments.
+        This 1-hour tutorial will cover the architectural details of AMD Versal devices and associated tool flows (Vitis).
       </p>
     </li>
     <li>
-      <strong>AI Development Flow on AMD NPUs</strong> <br/>
-      <em>Presenters: TBD</em> <br/>
+      <strong>Executing CNNs on AMD DPUs</strong> <br/>
+      <em>Presenters: M A Muneeb and Rajesh Kedia, IIT Hyderabad</em> <br/>
       <p>
-        Discover the end-to-end AI development flow leveraging AMD’s Neural Processing Units (NPUs) for high-performance inference acceleration. The session will walk through model quantization, compilation, and runtime optimization workflows tailored to AMD’s latest NPU ecosystem.
+        This 1-hour tutorial will cover our flows and methodology for executing various CNNs on Deep learning Processor Unit (DPU) which is a CNN accelerator for FPGAs.
+		The tutorial will also expose the participants to Heterogeneous Accelerated Compute Cluster (HACC).
       </p>
     </li>
     <li>
-      <strong>Introduction to FPGA, FINN, and Brevitas</strong> <br/>
-      <em>Presenters: TBD</em> <br/>
+      <strong>AI on AMD NPUs</strong> <br/>
+      <em>Presenters: Naveen Purushotham, AMD</em> <br/>
       <p>
-        This introductory tutorial offers a guided overview of FPGA-based AI acceleration using FINN and Brevitas. Participants will explore quantization-aware training and custom dataflow architectures to accelerate low-precision neural networks with high efficiency.
+        TBD
       </p>
     </li>
   </ul>
@@ -190,15 +191,15 @@
         </thead>
         <tbody>
           <tr>
-            <td>09:00 – 09:05</td>
+            <td>09:00 – 09:10</td>
             <td>10</td>
             <td>Opening Remarks</td>
             <td>Welcome Address</td>
             <td>Organizing Committee</td>
           </tr>
           <tr>
-            <td>09:05 – 09:30</td>
-            <td>25</td>
+            <td>09:10 – 09:30</td>
+            <td>20</td>
             <td>Keynote</td>
             <td>Emerging Trends in Reconfigurable HPC Systems</td>
             <td>TBD</td>
@@ -207,8 +208,8 @@
             <td>09:30 – 10:30</td>
             <td>60</td>
             <td>Tutorial-1</td>
-            <td>FPGA Acceleration Techniques for Machine Learning<br/></td>
-            <td>TBD</td>
+            <td>AMD Versal Device and Vitis Flow<br/></td>
+            <td>Wikneswaran (Wicky) Pillai, AMD</td>
           </tr>
           <tr>
             <td>10:30 – 10:45</td>
@@ -221,15 +222,22 @@
             <td>10:45 – 11:45</td>
             <td>60</td>
             <td>Tutorial-2</td>
-            <td>Dynamic Reconfiguration for Energy-Efficient HPC<br/></td>
-            <td>TBD</td>
+            <td>Executing CNNs on AMD DPUs<br/></td>
+            <td>M A Muneeb and Rajesh Kedia, IIT Hyderabad</td>
           </tr>
+          <tr>
+            <td>11:45 – 11:50</td>
+            <td>5</td>
+            <td>Break</td>
+            <td>Break<br/></td>
+            <td>-</td>
+          </tr>			
           <tr>
             <td>11:50 – 12:50</td>
             <td>60</td>
             <td>Tutorial-3</td>
-            <td>Dynamic Reconfiguration for Energy-Efficient HPC<br/></td>
-            <td>TBD</td>
+            <td>AI on AMD NPUs<br/></td>
+            <td>Naveen Purushotham, AMD</td>
           </tr>			
 		  <tr>	
             <td>12:50 – 13:00</td>
@@ -243,11 +251,11 @@
     </section>
 
     <section id="people">
-      <h2>People</h2>
+      <h2>Organizers</h2>
       <ul>
         <li>
           <strong>Madhura Purnaprajna</strong><br/>
-          <em>Affiliation:</em> AMD <br/>
+          <em>Affiliation:</em> AMD and PES University, Bengaluru <br/>
           <em>Bio:</em> Lead Systems Architect at Xilinx India, specializing in AI compiler flows and energy-efficient reconfiguration techniques. Instrumental in developing next-generation FPGA-based AI acceleration platforms and holds multiple patents in the domain.
         </li>
         <li>
@@ -257,9 +265,14 @@
         </li>
         <li>
           <strong>Naveen Purushotham</strong><br/>
-          <em>Affiliation:</em> AMD <br/>
+          <em>Affiliation:</em> AMD University Program<br/>
           <em>Bio:</em>Lead Systems Architect at Xilinx India, specializing in AI compiler flows and energy-efficient reconfiguration techniques. Instrumental in developing next-generation FPGA-based AI acceleration platforms and holds multiple patents in the domain.
         </li>
+        <li>
+          <strong>Andrew Schmidt</strong><br/>
+          <em>Affiliation:</em> AMD University Program<br/>
+          <em>Bio:</em>Lead Systems Architect at Xilinx India, specializing in AI compiler flows and energy-efficient reconfiguration techniques. Instrumental in developing next-generation FPGA-based AI acceleration platforms and holds multiple patents in the domain.
+        </li>		  
       </ul>
     </section>
 
